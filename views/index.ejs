@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+</head>
+<body>
+<h1>AES-CTR</h1>
+<table>
+    <tr>
+        <td>
+            Plaintext:
+        </td>
+        <td>
+            <%= plaintext %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ciphertext:
+        </td>
+        <td>
+            <%= ciphertext %>
+        </td>
+    </tr>
+</table>
+<p id="error">Error : <%= error %></p>
+<!-- https://en.wikipedia.org/wiki/Chosen-plaintext_attack -->
+</body>
+</html>

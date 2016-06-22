@@ -1,0 +1,14 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+td {
+    font-family: 'Inconsolata', monospace;
+    font-size: xx-large;
+}
+
+#error {
+    color: red;
+    font-weight: bold;
+}
