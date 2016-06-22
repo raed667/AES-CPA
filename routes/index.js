@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
     var plaintext = req.param('data');
     var errorMessage = "None";
     var ciphertext = "";
-    if (plaintext.length < 1) {
+    if (plaintext === undefined || plaintext.length < 1) {
         errorMessage = "Data input must not be empty. Pass ?data=XYZ param.";
     } else {
         plaintext = toHex(plaintext).toUpperCase();
