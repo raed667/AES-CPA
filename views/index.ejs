@@ -116,9 +116,37 @@
     </div>
 </div>
 <!-- jQuery Version 1.11.1 -->
-<script src="js/jquery.js"></script>
+<script src="/javascripts/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/sha256.js"></script>
+
+
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    var data = getUrlParameter("data");
+    if (data !== undefined) {
+        if (Sha256.hash(data) === "f76f53855156e5d09c1d3c0891c4738773d7032d9f0adbb821f83bf630f727d4") {
+            alert("Good job, you found it!");
+        }
+    }
+
+</script>
+
 <!-- https://en.wikipedia.org/wiki/Chosen-plaintext_attack -->
 </body>
 </html>
