@@ -1,14 +1,29 @@
 body {
-    padding: 50px;
+    height: 100%;
+    padding-top: 70px;
+    padding-bottom: 60px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-td {
+.secret, td {
     font-family: 'Inconsolata', monospace;
     font-size: xx-large;
 }
 
-#error {
+.error {
     color: red;
     font-weight: bold;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: rgb(16, 16, 16);
+}
+
+.heart {
+    color: #D14;
+    font-size: 140%;
 }
