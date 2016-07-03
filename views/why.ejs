@@ -69,15 +69,14 @@
             where C is the ciphertext, P is the plaintext, and E is the AES function.
             <br>
             Now if we input two different plaintext values:<br>
-            <b>C1=P1⊕E(Key,IV)</b><br><br>
-            <b>C2=P2⊕E(Key,IV)</b>
+            <b>C1=P1⊕E(Key,Nonce)</b><br><br>
+            <b>C2=P2⊕E(Key,Nonce)</b>
             <br>
             We can easily deduce that:<br>
             <b>C1⊕C2=P1⊕P2</b><br>
         <h2>Voila!</h2>
         <hr>
         </p>
-
     </div>
 </div>
 <div class="footer navbar-fixed-bottom">
