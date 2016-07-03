@@ -40,57 +40,29 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1>Hack AES</h1>
-            <p class="lead">Find the secret message that was encrypted using AES!</p>
-            <p class="lead">Decrypt this secret message:</p>
-            <div class="alert alert-info" role="alert"><p class="secret">
-                    <%= encryptedSecret %>
-                </p></div>
-            <ul class="list-unstyled">
-                <li><a href="#">AES-CTR</a></li>
-                <li>Read the <a href="#">code on Github</a></li>
-            </ul>
+            <h1>How does this work?</h1>
         </div>
+        <p>
+            This little app uses AES-CTR (<a
+                    href="http://csrc.nist.gov/groups/ST/toolkit/BCM/documents/proposedmodes/ctr/ctr-spec.pdf">Counter
+                mode</a>). This mode, <em>if used properly</em> is considered secure. However, if you have solved the
+            little challenge in this app, you saw that we were very easily able to find a secret message encrypted using
+            AES.
+        </p>
+        <h2>What went wrong?</h2>
+        <p>
+            In the AES-CTR recommendations, it is required that the pair < Key, Nonce > should be unique for every
+            signle
+            message.
+        </p>
+        <p>
+            If you examine <a href="https://github.com/RaedsLab/AES-CPA/blob/master/routes/index.js#L52"
+                              target="_blank">the code</a>, we can see that the nonce is fixed for every message.
+        </p>
+        <script src="https://gist-it.appspot.com/github/RaedsLab/AES-CPA/blob/master/routes/index.js"></script>
     </div>
-    <hr>
-    <p class="lead">Provide as many inputs as you like:</p>
-    <div class="row">
-        <div class="col-lg-6">
-            <form action="/" method="get">
-                <div class="form-group">
-                    <label for="data">Unicode Input</label>
-                    <input type="text" name="data" class="form-control" id="data" placeholder="Input data">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <table>
-                <tr>
-                    <td>
-                        Plaintext:
-                    </td>
-                    <td>
-                        <%= plaintext %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Ciphertext:
-                    </td>
-                    <td>
-                        <%= ciphertext %>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <hr>
-    <div class="col-lg-8 col-lg-offset-2 alert alert-danger error" role="alert">Error : <%= error %></div>
 </div>
+
 <div class="footer navbar-fixed-bottom">
     <div class="container">
         <p class="text-muted"><span id="footerContent">Made with <span class="heart">♥</span></span> by <a
@@ -106,31 +78,5 @@
 </div>
 <script src="/javascripts/jquery.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
-<script src="/javascripts/sha256.js"></script>
-<script>
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-
-    var data = getUrlParameter("data");
-    if (data !== undefined) {
-        if (Sha256.hash(data) === "<%= secretHash %>") {
-            alert("Good job, you found it!");
-            window.location.assign("/explanation")
-        }
-    }
-</script>
-<!-- https://en.wikipedia.org/wiki/Chosen-plaintext_attack -->
 </body>
 </html>

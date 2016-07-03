@@ -4,9 +4,20 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+
+    var secretMessage = process.env.SECRET_MESSAGE;
+    var encryptedSecret = encrypt(toHex(secretMessage).toUpperCase());
+
+    ///HASH OF Secret
+    var md = forge.md.sha256.create();
+    md.update(secretMessage);
+    var secretHash = md.digest().toHex();
+
+
     var plaintext = req.param('data');
     var errorMessage = "None";
     var ciphertext = "";
+
     if (plaintext === undefined || plaintext.length < 1) {
         errorMessage = "Data input must not be empty. Pass ?data=XYZ param.";
         plaintext = ciphertext = "ERROR";
@@ -17,7 +28,18 @@ router.get('/', function (req, res, next) {
         plaintext = toHex(plaintext).toUpperCase();
         ciphertext = encrypt(plaintext);
     }
-    res.render('index', {plaintext: plaintext, error: errorMessage, ciphertext: ciphertext});
+    res.render('index', {
+        plaintext: plaintext,
+        error: errorMessage,
+        ciphertext: ciphertext,
+        secretHash: secretHash,
+        encryptedSecret: encryptedSecret
+    });
+});
+
+router.get('/explanation', function (req, res, next) {
+
+    res.render('why', null);
 });
 
 router.get('/xor', function (req, res, next) {
