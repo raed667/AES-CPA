@@ -32,6 +32,9 @@
                 <li>
                     <a target="_blank" href="/xor">Tools</a>
                 </li>
+                <li>
+                    <a href="/explanation">Solution</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -59,10 +62,24 @@
             If you examine <a href="https://github.com/RaedsLab/AES-CPA/blob/master/routes/index.js#L52"
                               target="_blank">the code</a>, we can see that the nonce is fixed for every message.
         </p>
-        <script src="https://gist-it.appspot.com/github/RaedsLab/AES-CPA/blob/master/routes/index.js"></script>
+        <script src="https://gist-it.appspot.com/github/RaedsLab/AES-CPA/blob/master/routes/index.js/?slice=73:88&footer=no"></script>
+        <p>
+            Now knowing that the nonce and the key are the same for every operation, we get this:<br>
+            <b>C=P⊕E(Key,Nonce)</b><br>
+            where C is the ciphertext, P is the plaintext, and E is the AES function.
+            <br>
+            Now if we input two different plaintext values:<br>
+            <b>C1=P1⊕E(Key,IV)</b><br><br>
+            <b>C2=P2⊕E(Key,IV)</b>
+            <br>
+            We can easily deduce that:<br>
+            <b>C1⊕C2=P1⊕P2</b><br>
+        <h2>Voila!</h2>
+        <hr>
+        </p>
+
     </div>
 </div>
-
 <div class="footer navbar-fixed-bottom">
     <div class="container">
         <p class="text-muted"><span id="footerContent">Made with <span class="heart">♥</span></span> by <a

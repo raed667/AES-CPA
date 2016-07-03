@@ -32,6 +32,9 @@
                 <li>
                     <a target="_blank" href="/xor">Tools</a>
                 </li>
+                <li>
+                    <a href="/explanation">Solution</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -122,7 +125,6 @@
             }
         }
     };
-
     var data = getUrlParameter("data");
     if (data !== undefined) {
         if (Sha256.hash(data) === "<%= secretHash %>") {
