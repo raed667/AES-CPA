@@ -4,7 +4,7 @@ This is a very basic crypto challenge I setup for my fellow interns at SAP Labs.
 The basic idea is to find a secret message encrypted using AES-CTR. 
 
 You may submit as many messages as you'd like and the form would gladly encrypt them for you.
-A handy tool has been set for you, so that should be a hint: https://aescpa.herokuapp.com/xor
+A handy tool has been set for you, so that should be a hint: https://delicate-smoke-264.fly.dev/xor
 
 A detailed explanation is available, but don't be tempted to cheat.
 
